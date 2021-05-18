@@ -27,7 +27,7 @@ public class WebSocketsController {
     @ResponseBody
     @PostMapping(value = "/clientCallback")
     public Result testClientCallback(HttpServletRequest request, @RequestParam String msg)  {
-
+        System.out.println("请求msg" + msg);
         final String[] callbackMessage = {null};
         try {
             if(socketClient.isClosed()){
@@ -56,10 +56,13 @@ public class WebSocketsController {
         }
 
         System.out.println("controller" + callbackMessage[0]);
+        if(callbackMessage[0] == null){
+            callbackMessage[0] = "网络正忙";
+        }
         return Result.ok().data("msg",callbackMessage[0]);
     }
     //3.添加定时任务
-    @Scheduled(cron = "0/45 * * * * ?")
+    /*@Scheduled(cron = "0/45 * * * * ?")
     //或直接指定时间间隔，例如：30秒
     //@Scheduled(fixedRate=5000)
     private void configureTasks() {
@@ -67,5 +70,5 @@ public class WebSocketsController {
             socketClient.close();
         }
         System.err.println("执行静态定时任务时间: " + LocalDateTime.now());
-    }
+    }*/
 }

@@ -44,7 +44,7 @@ public class CustomizedWebSocketClient extends WebSocketClient {
      */
     public CustomizedWebSocketClient(URI serverUri) {
         super(serverUri);
-        logger.info("CustomizeWebSocketClient init:" + serverUri.toString());
+        //logger.info("CustomizeWebSocketClient init:" + serverUri.toString());
     }
 
     /**
@@ -69,7 +69,7 @@ public class CustomizedWebSocketClient extends WebSocketClient {
         if(callback !=null) {
             callback.callback(s);
         }
-        logger.info("CustomizeWebSocketClient onMessage:" + s);
+        //logger.info("CustomizeWebSocketClient onMessage:" + s);
     }
 
     /**
@@ -83,7 +83,7 @@ public class CustomizedWebSocketClient extends WebSocketClient {
     public void onClose(int i, String s, boolean b) {
         this.hasConnection.set(false);
         this.hasMessage.set(false);
-        System.out.println("连接关闭");
+        //System.out.println("连接关闭");
     }
 
     /**
@@ -129,7 +129,7 @@ public class CustomizedWebSocketClient extends WebSocketClient {
 
     @Override
     public void connect() {
-        logger.info("CustomizeWebSocketClient connect");
+        //logger.info("CustomizeWebSocketClient connect");
             super.connect();
     }
     @Override
